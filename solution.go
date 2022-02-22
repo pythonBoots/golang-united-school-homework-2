@@ -9,15 +9,19 @@ import "math"
 // CalcSquare(10.0, SidesTriangle)
 // CalcSquare(10.0, SidesSquare)
 // CalcSquare(10.0, SidesCircle)
-type sidesName string
+type sidesName int
+
+const SidesTriangle = 3
+const SidesSquare = 4
+const SidesCircle = 0
 
 func CalcSquare(sideLen float64, sidesNum sidesName) float64 {
 	switch sidesNum {
-	case "SidesTriangle":
-		return (math.Sqrt(3) / 4) * math.Pow(sideLen, 2)
-	case "SidesSquare":
+	case SidesTriangle:
+		return (math.Sqrt(3) / 4) * sideLen * sideLen
+	case SidesSquare:
 		return sideLen * sideLen
-	case "SidesCircle":
+	case SidesCircle:
 		return 2 * sideLen * sideLen * math.Pi
 	default:
 		return 0
